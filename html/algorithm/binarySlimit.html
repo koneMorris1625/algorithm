@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // binarySearch
+        // @parm arr arr[] [0, 1, 2, 3, 4, 5]
+        // @parm target 数组中被查找的值
+        function binarySearch00(arr, target) {
+            // 循环不变量: [l, r), l = r - 1 时找到 target
+            var l = 0, r = arr.length;
+            // [2,2) 是取不到 2 的, 所以 l = r 时就跳出, 更不用说 l > r
+            while (l < r) {
+                var mid = Math.floor((l + r) / 2);
+                if (arr[mid] == target) {
+                    // target 与数组中中位索引位置的数据一致, 说明找到了要查找的数.
+                    // 返回该 target 在数组中的索引.
+                    alert(mid + '---' + arr[mid]);
+                    return mid;
+                }
+                if (arr[mid] > target) {
+                    // 维护右边界 r, 此时边界变成 [l, mid), 
+                    // 这样写, 方便在 l = r - 1 时, 取到 l
+                    // 即: [2,3) 时取到 2.
+                    r = mid;
+                } else {
+                    // 维护左边界 l, 此时变成 [mid + 1, r]
+                    l = mid + 1;
+                }
+            }
+            // l > r 
+            // 没有任何的区间有我们要找的target.
+            return -1;
+        }
+        function binarySearch01(arr, target) {
+            var l = 0, r = arr.length; // [l, r) 内寻找 target
+            while (l < r) { // 当 l == r 时, [l, r) 是无效的. 比如[2,2), 是取不到 2 的.
+                var mid = Math.floor(l + (r - l) / 2);//避免最大值溢出
+                if (arr[mid] == target) {
+                    alert(mid + '---' + arr[mid]);
+                    return mid;
+                }
+                if (arr[mid] > target) {
+                    r = mid;
+                } else {
+                    l = mid + 1;
+                }
+            }
+            return -1;
+        }
+        binarySearch00([0, 1, 2, 3, 4, 5], 2);
+    </script>
+
+
+</head>
+
+<body>
+
+</body>
+
+</html>
