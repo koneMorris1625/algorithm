@@ -43,34 +43,34 @@
         console.log(sortColors00([0, 1, 0, 2, 1, 2, 3, 4, 5, 5]));
         // --------------------------------------
         // [2, 0, 1, 0, 2, 1, 2] --> [0, 0, 1, 1, 2, 2]
-        function sortColorsByQuickSort3Ways(arr) {
+        function sortColorsByQuickSort3Ways(nums) {
             // [0, zero] 表示全是 0 元素; 记录已经找到的所有0
             var zero = -1;
             // [two, arr.length - 1] 全是 2 元素; 记录已经找到的所有2
-            var two = arr.length;
+            var two = nums.length;
             // [zero + 1,,,i - 1] 记录剩下的 1 元素.
             for (var i = 0; i < two;) {
-                if (arr[i] == 1) {
+                if (nums[i] == 1) {
                     i++;
-                } else if (arr[i] == 0) {
+                } else if (nums[i] == 0) {
                     zero++;
-                    var temp = arr[i];
-                    arr[i] = arr[zero];
-                    arr[zero] = temp;
+                    var temp = nums[i];
+                    nums[i] = nums[zero];
+                    nums[zero] = temp;
                     i++;
-                } else if (arr[i] == 2) {
+                } else if (nums[i] == 2) {
                     two--;
                     if (i == two) {
-                        return arr;
+                        return nums;
                     }
-                    var temp = arr[i];
-                    arr[i] = arr[two];
-                    arr[two] = temp;
+                    var temp = nums[i];
+                    nums[i] = nums[two];
+                    nums[two] = temp;
                 } else {
                     return -1;
                 }
             }
-            return arr;
+            return nums;
         }
 
         // function swap(one, two) {
