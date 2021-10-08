@@ -6,11 +6,13 @@
 
 // @lc code=start
 /**
+ *  TODO
+ * HACK
  * @param {number[]} nums
  * @return {boolean}
  */
-var containsDuplicate = function(nums) {
-    
+var containsDuplicate = function (nums) {
+
 };
 // @lc code=end
 
