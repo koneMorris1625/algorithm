@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>arrayTest</title>
+	</head>
+	<body>
+		<script>
+			// js 中不支持二维数组, 但可以这样实现.
+			let averageTemp = [];
+			averageTemp[0] = [72, 75, 79, 79, 81, 81];
+			averageTemp[1] = [81, 79, 75, 75, 73, 73];
+
+			// function printMatrix(myMatrix) {
+			// 	for (let i = 0; i < myMatrix.length; i++) {
+			// 		for (let j = 0; j < myMatrix[i].length; j++) {
+			// 			console.log(myMatrix[i][j]);
+			// 		}
+			// 	}
+			// }
+			console.table(averageTemp);
+			// |||||||||||||||||||||||||||||||||||
+			const matrix3x3x3 = [];
+			for (let i = 0; i < 3; i++) {
+				matrix3x3x3[i] = []; // 我们需要初始化每个数组
+				for (let j = 0; j < 3; j++) {
+					matrix3x3x3[i][j] = [];
+					for (let z = 0; z < 3; z++) {
+						matrix3x3x3[i][j][z] = i + j + z;
+					}
+				}
+			}
+			console.table(matrix3x3x3);
+			// for (let i = 0; i < matrix3x3x3.length; i++) {
+			// 	for (let j = 0; j < matrix3x3x3[i].length; j++) {
+			// 		for (let z = 0; z < matrix3x3x3[i][j].length; z++) {
+			// 			console.log(matrix3x3x3[i][j][z]);
+			// 		}
+			// 	}
+			// }
+			// ---------------FUNCTION-----------------
+			let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+            const isEven = x => x % 2 === 0;
+            // alert(numbers.every(isEven)) // false
+            alert(numbers.reduce((previous, current) => previous + current));
+		</script>
+	</body>
+</html>

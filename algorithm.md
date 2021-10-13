@@ -106,10 +106,10 @@
 
 ## 百家之言
 
-> 一个类型针对练习一些题目之后，你就可以发现一定的规律，某一些题目是这样解，另一些题目是那样解...这是一个很正常的现象，每种类型的题目肯定是存在一定规律的。
-> 
+> 一个类型针对练习一些题目之后，你就可以发现一定的规律，某一些题目是这样解，另一些题目是那样解... 这是一个很正常的现象，每种类型的题目肯定是存在一定规律的。
+>  
 > 这时候就可以开始对此类题目进行总结了，针对此类问题，以及其典型的题目，发现的解题方法，进行总结。当下次你再遇到这种类型的题目，你就能很快想到解题思路，从而很快的解答。
-> 
+>  
 > 所以，当你看到一个题目，**首先你要想到它属于哪种数据结构或算法，然后要想到这是一个什么类型的问题，然后是此类问题的解决方法。**
 
 ## 正视算法题
@@ -142,10 +142,13 @@
 2. 递归时间复杂度分析: 了解分析代码总共执行了多少次. 譬如: fiborna: `f(n) = f(n-1) + f(n-2)`; f(6) 的话就要计算 2^6 次.
    > **递归树**
 
-## 数组 Array
+## 数组 Array 
+
+<i id='array'></i>
 
 基础数据结构
 处理边界索引
+<a href='#necessaryKnowledge'>array's necessary implementation </a>
 
 ### 二分查找
 
@@ -165,75 +168,23 @@
 > - 快排, 堆, 图
 > - 关注**如何控制边界来保证循环不变量**
 
-### LeetCode 283 Move Zeros
-
-> title: 给定一个数组 nums, 写一个 function, 将数组中所有的 0 挪动到数组的末尾, 而维持其他所有非零元素的相对位置.
-> e.g. [0, 0, 1, 3, 12] --> [1, 3 , 12, 0, 0] > [moveZeros03Exchange](html/algorithm/binarySlimit.html)
-> 优化的思路: 使用了辅助的空间, 能否原地
-
-1. O(n) + O(n) + O(1)
-2. O(n) + O(1)
-3. exchange
-   1. 进一步优化: 或者说考虑问题, 发挥 k 指针的意义, 扫描整个数组. **思考特殊测试用例**时该怎么囊括进来.
-
-      [moveZeros03Exchange](html/algorithm/binarySlimit.html)
-
-练习 27: LeetCode 27 remove Element
-沟通明确问题的具体定义
-
-> - 如何定义删除? 从数组中删除, 还是说移动到末尾?
-> - 剩余元素是否要保证原有的相对顺序?
-> - 是否有空间复杂度的要求? O(1)
-
-练习 26: Remove Duplicated from Sorted Array
-练习 80: Remove Duplicated from Sorted Array ||
-
-### LeetCode 75 Sort Colors
-
-_计数排序_: 元素个数有限的场景. 分别统计 0, 1, 2 的元素个数
-
-[sortColors00()](./html/algorithm/sortColors.html)
-
-quick sort 3 ways _三路快排法_--> 经典问题的延伸
-
-[sortColorsByQuickSort3Ways()](./html/algorithm/sortColors.html)
-
-练习 88: Merge Sorted Array --> 归并排序
-练习 215: Kth largest Element in an Array
-
-### LeetCode 167 Two Sum || - Input array is sorted
-
-**对撞指针**
-和面试官沟通:
-
-> 1. 必须是不同的元素还是说能不能同一个元素? 比如说, 给定的有序整型数组中有只有一个 4, 但 target=8, 取两个 4 可以吗?
-> 2. 返回的索引是从 0 开始还是从 1 开始?
-> 3. 如果没有解怎么样?
-> 4. 如果有多个解? 返回任意解还是说解的集合, 这集合有什么顺序要求吗?
-
-解法:
-
-1. 暴力解法, for\*2 --> O(n^2)
-2. 暴力解法 02, i, binarySearch(`target - nums[i]`) --> O(nlogn)
-3. O(n):
-
-练习:
-125 Valid Palindrome
-344 Reverse String
-345 Reverse Vowels of a String
-11 Container With Most Water
-
-## String
-
-首先要注意到的问题:
-
-> - 空字符串怎么看待
-> - 通常会被看做是回文串的一部分, 但具体还是看题
-> - 字符的定义
-> - 大小写的问题
-
 ## Linkded List
 
 面试前一定要手写一遍
 
 > 解法固定, 算法 / 思路简单, 但代码容易写的很复杂.
+
+## 必知必会代码实现
+
+<i id='necessaryKnowledge'></i><a href='#array'>数组</a> <a href='./algorithmJS.md#arrayNecessary'>JS实现</a>
+
+> 一个支持动态扩容的数组
+> 实现一个大小固定的有序数组，支持动态增删改操作
+> 实现两个有序数组合并为一个有序数组
+
+链表实现
+
+> 单链表、循环链表、双向链表，支持增删操作
+> 实现单链表反转
+> 实现两个有序的链表合并为一个有序链表
+> 实现求链表的中间结点
