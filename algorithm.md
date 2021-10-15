@@ -1,4 +1,23 @@
 # Algorithm and Data Construction
+- [Algorithm and Data Construction](#algorithm-and-data-construction)
+  - [学习目标](#学习目标)
+  - [如何写出正确的代码?](#如何写出正确的代码)
+  - [如何刷题: 三四五组合, 世界观与方法论](#如何刷题-三四五组合-世界观与方法论)
+    - [精通任何领域的三重要点](#精通任何领域的三重要点)
+      - [1. 知识网络 -- chunk it up](#1-知识网络----chunk-it-up)
+      - [2. 刻意练习 -- deliberate practicing](#2-刻意练习----deliberate-practicing)
+      - [3. 即时反馈 -- feedback](#3-即时反馈----feedback)
+    - [四步切题法](#四步切题法)
+    - [五步刷题法 [五毒神掌]](#五步刷题法-五毒神掌)
+  - [百家之言](#百家之言)
+  - [正视算法题](#正视算法题)
+  - [时间复杂度](#时间复杂度)
+    - [Big O](#big-o)
+    - [常见的时间复杂度](#常见的时间复杂度)
+  - [数组 Array](#数组-array)
+    - [二分查找](#二分查找)
+  - [Linkded List](#linkded-list)
+  - [必知必会代码实现](#必知必会代码实现)
 
 ## 学习目标
 

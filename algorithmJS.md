@@ -1,6 +1,25 @@
 # JS Algorithm and Data Construction
-
-[TOC]
+- [JS Algorithm and Data Construction](#js-algorithm-and-data-construction)
+  - [Array & String](#array--string)
+    - [2D / 3D Array](#2d--3d-array)
+    - [Binary Search in JS](#binary-search-in-js)
+    - [必知必会代码实现](#必知必会代码实现)
+    - [经典题目](#经典题目)
+      - [LeetCode 283 Move Zeros](#leetcode-283-move-zeros)
+          - [练习 27: LeetCode 27 remove Element](#练习-27-leetcode-27-remove-element)
+          - [练习 26: Remove Duplicated from Sorted Array](#练习-26-remove-duplicated-from-sorted-array)
+          - [练习 80: Remove Duplicated from Sorted Array ||](#练习-80-remove-duplicated-from-sorted-array-)
+      - [LeetCode 75 Sort Colors](#leetcode-75-sort-colors)
+          - [练习 88: Merge Sorted Array --> 归并排序](#练习-88-merge-sorted-array----归并排序)
+          - [练习 215: Kth largest Element in an Array](#练习-215-kth-largest-element-in-an-array)
+    - [对撞指针](#对撞指针)
+      - [LeetCode 167 Two Sum || - Input array is sorted](#leetcode-167-two-sum----input-array-is-sorted)
+    - [slider window 滑动窗口](#slider-window-滑动窗口)
+      - [subString](#substring)
+          - [slider window 练习](#slider-window-练习)
+    - [String](#string)
+  - [Linkded List](#linkded-list)
+  - [Stack](#stack)
 
 ## Array & String
 
@@ -96,6 +115,7 @@ quick sort 3 ways _三路快排法_--> 经典问题的延伸
 [sortColorsByQuickSort3Ways()](./html/algorithm/sortColors.html)
 
 ###### 练习 88: Merge Sorted Array --> 归并排序
+
 ###### 练习 215: Kth largest Element in an Array
 
 ### 对撞指针
@@ -116,8 +136,11 @@ quick sort 3 ways _三路快排法_--> 经典问题的延伸
 3. O(n):
 
 ### slider window 滑动窗口
+
 #### subString
+
 ###### slider window 练习
+
 125 Valid Palindrome
 344 Reverse String
 345 Reverse Vowels of a String
@@ -137,3 +160,5 @@ quick sort 3 ways _三路快排法_--> 经典问题的延伸
 面试前一定要手写一遍
 
 > 解法固定, 算法 / 思路简单, 但代码容易写的很复杂.
+
+## Stack
