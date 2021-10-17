@@ -11,6 +11,62 @@
  * @return {number}
  */
 var removeElement = function (nums, val) {
+	// ------------day 01---------------
+	// ------------------------ force api
+	// let n = nums.length;
+	// for (let i = n - 1; i >= 0; i--) {
+	// 	if (nums[i] === val) {
+	// 		nums.splice(i, 1);
+	// 	}
+	// }
+	// return n;
+	// ||||||||||||||or||||||||||||||||
+	// let n = nums.length;
+	// for (let i = 0; i < n; i++) {
+	// 	if (nums[i] === val) {
+	// 		nums.splice(i, 1);
+	// 		i--;
+	// 	}
+	// }
+	// return n;
+	// ||||||||||||||or||||||||||||||||
+	// while (nums.includes(val)){
+	//     nums.splice(nums.indexOf(val),1);
+	// }
+	// return nums.length
+	//------------------ slow fast pointers
+	// let flag = 0;
+	// for (var i in nums) {
+	// 	if (nums[i] !== val) {
+	// 		nums[flag] = nums[i];
+	// 		flag++;
+	// 	}
+	// }
+	// return flag;
+	// |||||||||||||or|||||||||||||||||
+	// let slow = 0,
+	//   i = 0,
+	//   n = nums.length;
+	// for (; i < n; i++) {
+	//   if (nums[i] !== val) {
+	//     slow++;
+	//   } else {
+	//     nums[slow] = nums[i];
+	//   }
+	// }
+	// return slow;
+	//------------------ pointers collision
+	// let i = 0,
+	//   n = nums.length;
+	// while (i < n) {
+	//   if (nums[i] !== val) i++;
+	//   else {
+	//     nums[i] = nums[n - 1];
+	//     n--;
+	//   }
+	// }
+	// return n;
+	// ------------------day 00---------------------
 	// ---------------✔️快慢指针法----------------
 	// let slow = 0;
 	// let n = nums.length;
@@ -24,17 +80,17 @@ var removeElement = function (nums, val) {
 	// return slow; // [0,,,slow-1] -- [0,,,nums.length-1]
 
 	// ---------------对撞指针法----------------
-	let n = nums.length,
-		i = 0; // [0,,,n)为有效区间, [n,,,nums.length-1]为删除区间
-	while (i < n) {
-		if (nums[i] !== val) {
-			i++;
-		} else {
-			nums[i] = nums[n - 1]; // [n,,,nums.length-1]为应该被移除元素的区间
-			n--; //
-		}
-	}
-	return n;
+	// let n = nums.length,
+	// 	i = 0; // [0,,,n)为有效区间, [n,,,nums.length-1]为删除区间
+	// while (i < n) {
+	// 	if (nums[i] !== val) {
+	// 		i++;
+	// 	} else {
+	// 		nums[i] = nums[n - 1]; // [n,,,nums.length-1]为应该被移除元素的区间
+	// 		n--; //
+	// 	}
+	// }
+	// return n;
 	// |||||||||||||||||||||||||||||||||||||||
 	// let flag = nums.length - 1,
 	// 	i = 0;
