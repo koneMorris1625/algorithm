@@ -62,20 +62,36 @@
  * [9,9,9]
  */
 var plusOne = function (digits) {
-	// 3.
-	let len = digits.length;
-	for (let i = len - 1; i >= 0; i--) {
-		digits[i] = digits[i] + 1;
-		digits[i] = digits[i] % 10; // 精妙之处一: 原 digits[i] = 9 的话, 此处将其进行赋值, 省去官方二解的for赋值
-		// 精妙处二: 做出口判断条件, 且已经 +1 过了.
-		if (digits[i] !== 0) {
-			return digits;
-		}
+	/**
+	 * 5. 暴力解, 最直白, 但转换间注意精度
+	 * */
+	let numStr = "";
+	for (let i = 0; i < digits.length; i++) {
+		numStr += digits[i].toString();
 	}
-	digits.unshift(1); // 处理第三种情况. [9,9,9]
-	return digits;
+	// numStr = parseInt(numStr + 1).toString(); // 精度要求
+	numStr = (BigInt(numStr) + BigInt(1)).toString();
+	let ans = [];
+	for (let i = 0; i < numStr.length; i++) {
+		// ans.push(numStr[i].toString()); // number 类型的 [], 此处 str => num
+		ans.push(Number(numStr[i]));
+	}
+	return ans;
 };
 // @lc code=end
+
+// 3.
+// let len = digits.length;
+// for (let i = len - 1; i >= 0; i--) {
+// 	digits[i] = digits[i] + 1;
+// 	digits[i] = digits[i] % 10; // 精妙之处一: 原 digits[i] = 9 的话, 此处将其进行赋值, 省去官方二解的for赋值
+// 	// 精妙处二: 做出口判断条件, 且已经 +1 过了.
+// 	if (digits[i] !== 0) {
+// 		return digits;
+// 	}
+// }
+// digits.unshift(1); // 处理第三种情况. [9,9,9]
+// return digits;
 
 // 三叶女神的通用解 [2](https://leetcode-cn.com/problems/add-two-numbers/)
 // let len = digits.length;
@@ -123,6 +139,28 @@ var plusOne = function (digits) {
 // if (carry === 1) {
 //     digits = [1, ...digits];
 // }
+// return digits;
+
+// 1.2
+// let carry = 1;
+// for (let i = digits.length - 1; i >= 0; i--) {
+// 	[digits[i], carry] = [
+// 		(digits[i] + carry) % 10,
+// 		parseInt((digits[i] + carry) / 10),
+// 	];
+// 	//这就是一个简单的进位运算 比如 9+3=12 那最后应该进1余2 所以 当前的位置的数字就是余数2，因为
+// 	//进位了1所以在下一个位置的时候需要把进位的给加一下。就像加减法竖式运算那样
+// 	//[digits[i], digit] = [(digits[i] + digit) % 10, parseInt((digits[i] + digit) / 10)]
+// 	//上面那样写是直接用数组的解构性质，这样就不用定义另一个变量preNum先把初始的状态给缓存下
+// 	// const preNum = digits[i];
+// 	// digits[i] = (digits[i] + carry) % 10;
+// 	// carry = parseInt((preNum + carry) / 10);
+// }
+// carry && digits.unshift(carry);
+// // digit&&digits.unshift(digit) 和下面是等价的，这样写是因为我觉得这样能少几个括号。这就是个js的短路运算，日常工作挺实用的
+// // if (carry) {
+// // 	digits.unshift(carry);
+// // }
 // return digits;
 
 // @after-stub-for-debug-begin
