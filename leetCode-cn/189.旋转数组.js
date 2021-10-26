@@ -61,39 +61,105 @@
  *
  */
 // @lc code=start
-const gcd = (n, k) => (k ? gcd(k, n % k) : n);
+// const gcd = (n, k) => (k ? gcd(k, n % k) : n);
+/**
+ *
+ * @param {number[]} nums
+ * @param {number} start
+ * @param {number} end
+ */
+var reverse = function (nums, start, end) {
+	while (start < end) {
+		[nums[start++], nums[end--]] = [nums[end], nums[start]];
+		// start++; end--;
+	}
+};
 /**
  * @param {number[]} nums
  * @param {number} k
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var rotate = function (nums, k) {
-	// 5.2 环形数组, 最多遍历 n 次
+	// 5. 环形数组
 	let len = nums.length,
-		visited = 0;
-	// current = 0; 定义在这里是极端错误的.
-	k = k % len;
-	for (let start = 0; visited < len; start++) { // len 个数, 应该遍历 len 次
-		let current =  ,
+		visited = 0,
+		start = 0,
+		prev = 0;
+	k %= len;
+	while (visited < len) {
+		let current = start;
 		prev = nums[current];
 		do {
-			let next = (current + k) % len,
-				temp = nums[next];
+			let next = (current + k) % len;
+			const temp = nums[next];
 			nums[next] = prev;
-			prev = temp;
 			current = next;
+			prev = temp;
 			visited++;
 		} while (current !== start);
-
+		start++;
 	}
+
+	// 1. 暴力 API
+	// let len = nums.length;
+	// for (let i = 0; i < k % len; i++) {
+	// 	nums.unshift(nums.pop());
+	// }
+
+	// 2. 动态数组 补位
+	// let i = len = nums.length;
+	// k = k % len;
+	// while (i--) { // ! i-- 而不是 --i. while 内 0 为 false
+	// 	nums[i + k] = nums[i];
+	// 	if (i < k) {
+	// 		nums[i] = nums[len + i];
+	// 	}
+	// }
+	// nums.length = len;
+
+	// // 3. 新数组 覆盖
+	// let len = nums.length,
+	// 	buffer = new Array(len);
+	// k %= len;
+	// for (let i = 0; i < len; i++) {
+	// 	buffer[(i + k) % len] = nums[i];
+	// }
+	// for (let i = 0; i < len; i++) {
+	// 	nums[i] = buffer[i];
+	// }
+
+	// 4. 三步翻转
+	// let len = nums.length;
+	// k %= len;
+	// reverse(nums, 0, len - 1);
+	// reverse(nums, 0, k - 1);
+	// reverse(nums, k, len - 1);
 };
 // @lc code=end
+// // 5.2 环形数组, 最多遍历 n 次
+// let len = nums.length,
+// 	visited = 0;
+// // current = 0; 定义在这里是极端错误的.
+// k = k % len;
+// for (let start = 0; visited < len; start++) { // ! len 个数, 应该遍历 len 次
+// 	let current =  ,
+// 	prev = nums[current];
+// 	do {
+// 		let next = (current + k) % len,
+// 			temp = nums[next];
+// 		nums[next] = prev;
+// 		prev = temp;
+// 		current = next;
+// 		visited++;
+// 	} while (current !== start);
+
+// }
 
 // 5.1 环状数组 最大公约数
 // let len = nums.length;
 // // current = 0; 定义在这里是极端错误的.
 // k = k % len;
-// let count = gcd(len, k); // count = 1, 递归求最大公约数
+// let count = gcd(len, k); //! count = 1, 递归求最大公约数
 // for (let start = 0; start < count; start++) {
 // 	let current = start,
 // 		prev = nums[start];
@@ -109,7 +175,7 @@ var rotate = function (nums, k) {
 // 4. 利用 javascript 动态数组的特性, 补位截取
 // let i = (len = nums.length),
 // 	km = k % len;
-// if (km === 0) { // 处理 [1], 1 这种特殊情况.
+// if (km === 0) { //! 处理 [1], 1 这种特殊情况.
 // 	return nums;
 // }
 // for (i = i - 1; i >= 0; i--) {
@@ -137,7 +203,7 @@ var rotate = function (nums, k) {
 //  */
 // let reverse = function (nums, start, end) {
 // 	while (start < end) {
-// 		// es6 swap(nums[start], nums[end].
+// 		//! es6 swap(nums[start], nums[end].
 // 		[nums[start++], nums[end--]] = [nums[end], nums[start]];
 // 	}
 // };
@@ -171,23 +237,6 @@ var rotate = function (nums, k) {
 // 	nums.unshift(nums.pop());
 // }
 
-// const gcd = (x, y) => (y ? gcd(y, x % y) : x);
-
-// var rotate = function (nums, k) {
-// 	let len = nums.length,
-// 		km = k % len;
-// 	let newArr = Array.from(nums);
-// 	for (let i = 0; i < km; i++) {
-// 		let temp = newArr[len - 1 - i]; // 变量保存最后一位
-// 		for (let j = len - 1; j > i; j--) {
-// 			nums[j] = nums[j - 1];
-// 			if (j + 1 === i + 1) {
-// 				nums[j] = nums[j - 1];
-// 				nums[0] = temp;
-// 			}
-// 		}
-// 	}
-// };
 // @after-stub-for-debug-begin
 module.exports = rotate;
 // @after-stub-for-debug-end
