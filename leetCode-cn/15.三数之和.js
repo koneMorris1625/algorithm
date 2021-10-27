@@ -58,48 +58,102 @@
  * @return {number[][]}
  */
 var threeSum = function (nums) {
-	let len = nums.length,
-		ans = [];
+	if (nums) {
+		let len = nums.length,
+			ans = [];
 
-	if (len < 3 || nums.every((e) => e > 0)) {
-		return ans;
-	}
-
-	nums.sort((a, b) => a - b);
-
-	for (let i = 0; i < len; i++) {
-		if (nums[i] > 0) {
+		if (len < 3 || nums.every((e) => e > 0)) {
 			return ans;
 		}
-		// ! 去重; i>0: 从 i=1 开始比较
-		if (i > 0 && nums[i] === nums[i - 1]) {
-			continue;
+
+		nums.sort((a, b) => a - b);
+		// 最小值大于 0 或者 最大值小于 0，说明没有无效答案
+		if (nums[0] > 0 || nums[len - 1] < 0) {
+			return [];
 		}
-		let l = i + 1,
-			r = len - 1;
-		while (l < r) {
-			let condition = nums[i] + nums[l] + nums[r];
-			if (condition === 0) {
-				ans.push([nums[i], nums[l], nums[r]]);
-				// ! 去重
-				while (l < r && nums[l] === nums[l + 1]) {
-					l++;
+		for (let i = 0; i < len; i++) {
+			if (nums[i] > 0) {
+				return ans;
+			}
+			//* bug:  if (nums[i] === nums[i + 1]) {  少一个解, 去太多重了.
+			if (i > 0 && nums[i] === nums[i - 1]) {
+				continue;
+			}
+			let startIndex = i + 1,
+				endIndex = len - 1;
+
+			while (startIndex < endIndex) {
+				let condition = nums[i] + nums[startIndex] + nums[endIndex];
+				if (condition === 0) {
+					ans.push([nums[i], nums[startIndex], nums[endIndex]]);
+					while (
+						startIndex < endIndex &&
+						nums[startIndex] === nums[startIndex + 1]
+					) {
+						startIndex++;
+					}
+					while (
+						startIndex < endIndex &&
+						nums[endIndex] === nums[endIndex - 1]
+					) {
+						endIndex--;
+					}
+					startIndex++;
+					endIndex--;
+				} else if (condition > 0) {
+					endIndex--;
+				} else {
+					startIndex++;
 				}
-				while (l < r && nums[r] === nums[r - 1]) {
-					r--;
-				}
-				l++;
-				r--;
-			} else if (condition < 0) {
-				l++;
-			} else {
-				r--;
 			}
 		}
+		return ans;
+	} else {
+		return [];
 	}
-	return ans;
 };
 // @lc code=end
+
+// let len = nums.length,
+// 	ans = [];
+
+// if (len < 3 || nums.every((e) => e > 0)) {
+// 	return ans;
+// }
+
+// nums.sort((a, b) => a - b);
+
+// for (let i = 0; i < len; i++) {
+// 	if (nums[i] > 0) {
+// 		return ans;
+// 	}
+// 	// ! 去重; i>0: 从 i=1 开始比较
+// 	if (i > 0 && nums[i] === nums[i - 1]) {
+// 		continue;
+// 	}
+// 	let l = i + 1,
+// 		r = len - 1;
+// 	while (l < r) {
+// 		let condition = nums[i] + nums[l] + nums[r];
+// 		if (condition === 0) {
+// 			ans.push([nums[i], nums[l], nums[r]]);
+// 			// ! 去重
+// 			while (l < r && nums[l] === nums[l + 1]) {
+// 				l++;
+// 			}
+// 			while (l < r && nums[r] === nums[r - 1]) {
+// 				r--;
+// 			}
+// 			l++;
+// 			r--;
+// 		} else if (condition < 0) {
+// 			l++;
+// 		} else {
+// 			r--;
+// 		}
+// 	}
+// }
+// return ans;
 
 // 不成熟的思考, 思路原本就没想清楚, 特值的处理, 对[无重复项]的题目条件理解不对.
 // let len = nums.length,
