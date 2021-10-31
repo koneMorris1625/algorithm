@@ -19,6 +19,7 @@
     - [二分查找](#二分查找)
   - [Linkded List](#linkded-list)
   - [必知必会代码实现](#必知必会代码实现)
+  - [待刷题一览](#待刷题一览)
 
 ## 学习目标
 
@@ -218,3 +219,13 @@
 > 实现单链表反转
 > 实现两个有序的链表合并为一个有序链表
 > 实现求链表的中间结点
+
+## 待刷题一览
+
+看见一个课程, 挺想买的, 有机会试下[](https://ke.qq.com/course/package/31104?flowToken=1039500), 放了链接又没放链接, hhh
+
+最下面贴了课程讲解问题, 听说有三四百道题的讲解. 
+
+![基础班的](https://10.idqqimg.com/qqke_course_info/ajNVdqHZLLBqO5xicic16Fayib252nXsia4vONCUKhhiakSg1aIPszzwdrZicH5Z4qf7RZRTsU9Sbaiaxk/)
+
+![刷题中级班](https://10.idqqimg.com/qqke_course_info/ajNVdqHZLLBkssX1Zmictic2jRvKxSkKYiaicPlyXvBX938cQzuWorqn3XfY8Un98f9Uct8H9LuVSvs/)

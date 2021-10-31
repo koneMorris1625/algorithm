@@ -10,15 +10,6 @@
             "type": "pwa-chrome",
             "url": "http://localhost:8080",
             "webRoot": "${workspaceFolder}/leetCode-cn"
-        },
-
-		{
-			"name": "Launch Program",
-			"program": "${workspaceFolder}/leetCode-cn/",
-			"request": "launch",
-			"skipFiles": ["<node_internals>/**"],
-			"type": "pwa-node",
-            "outputCapture": "std"
-		}
+        }
 	]
 }
