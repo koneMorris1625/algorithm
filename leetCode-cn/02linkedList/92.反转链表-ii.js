@@ -62,6 +62,23 @@ class ListNode {
 		this.next = next === undefined ? null : next;
 	}
 }
+
+let successor = null;
+/**
+ * @param {ListNode} head
+ * @param {number} right Top N 即 Top right
+ * @return {ListNode}
+ */
+var reverseTopN = function (head, right) {
+	if (right === 1) {
+		successor = head.next;
+		return head;
+	}
+	let reversed = reverseTopN(head.next, right - 1);
+	head.next.next = head;
+	head.next = successor;
+	return reversed;
+};
 /**
  * @param {ListNode} head
  * @param {number} left
@@ -69,30 +86,79 @@ class ListNode {
  * @return {ListNode}
  */
 var reverseBetween = function (head, left, right) {
-	let dummyHead = new ListNode(0, head),
-		g = dummyHead,
-		p = g.next;
-
-	for (let i = 0; i < left - 1; i++) {
-		g = g.next;
-		p = p.next;
-	}
-
-	for (let i = 0; i < right - left; i++) {
-		let nxtNode = p.next;
-		p.next = p.next.next;
-		nxtNode.next = g.next;
-		g.next = nxtNode;
-	}
-
-	console.log(head);
-	return dummyHead.next;
-
-	// 3. 双指针反转区间后拼接✔️
 	// 1. 尝试用递归 --> 最小子问题✔️
+	// 如何用递归思想求解该题目。
+	// 1.2 子问题(终止条件) 转化成了 TOP N 的反转.
+	// left = 1 时转化成最小子问题: reverseTopN
+	if (left === 1) {
+		return reverseTopN(head, right);
+	}
+	// 1.1 递归解题首先要做的是明确递推公式的含义, 接着要明确的就是递归终止条件。
+	let between = reverseBetween(head.next, left - 1, right - 1);
+	head.next = between;
+	return head;
+	// https://leetcode-cn.com/problems/reverse-linked-list-ii/solution/yi-bu-yi-bu-jiao-ni-ru-he-yong-di-gui-si-lowt/
 	// https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247484467&idx=1&sn=beb3ae89993b812eeaa6bbdeda63c494&scene=21#wechat_redirect
 };
+
 // @lc code=end
+
+// // 3. 双指针反转区间后拼接✔️
+// if (head === null || head.next === null) return head;
+// let dummyHead = new ListNode(0, head),
+// 	g = dummyHead;
+// right = right - left;
+// while (--left) { // 写法优: 省去for循环的写法, 简单方便,熟悉后好理解; 缺点: 初用要适应一番; 对left参数改变, 影响后续使用.
+// 	g = g.next;
+// }
+// let x = g.next,
+// 	y = g.next.next;
+// while (right--) {
+// 	let temp = y.next;
+// 	y.next = x; // 后一个的next指针指向前面
+// 	x = y; // x,y指针往后扫描
+// 	y = temp;
+// }
+// g.next.next = y; // g.next 即初始x节点, 现在变成了尾节点, 让它指向right+1的节点
+// g.next = x; // g 节点本身的next 指向 x节点
+// return dummyHead.next;
+
+// 测试用例 [1,2,3,4,5], left =3, right = 4
+let e = new ListNode(5, null),
+	ed = new ListNode(4, e),
+	edf = new ListNode(3, ed),
+	edfc = new ListNode(2, edf),
+	head = new ListNode(1, edfc);
+console.log(`before reverse: ${head}`);
+let after = reverseBetween(head, 3, 4);
+console.log(`after reverse: ${after}`);
+let a = 0;
+
+// 双指针头插法注释版
+// 定义虚拟头节点处理一个节点的特殊情况
+// let dummyHead = new ListNode(0, head);
+// // 定义双指针
+// let g = dummyHead,
+// 	p = dummyHead.next;
+// // 移动双指针到 g = left - 1, p = left 的位置
+// for (let i = 0; i < left - 1; i++) {
+// 	g = g.next;
+// 	p = p.next;
+// }
+// let g = dummyHead;
+// while (--left) {
+// 	g = g.next;
+// }
+// let p = g.next;
+// // 头插法处理
+// for (let i = 0; i < right - left; i++) {
+// 	// todo [p.next.next, p, g] = [g.next, p.next.next, p.next];
+// 	const removedNode = p.next;
+// 	p.next = p.next.next;
+// 	removedNode.next = g.next;
+// 	g.next = removedNode;
+// }
+// return dummyHead.next;
 
 // let m = left,
 // 	n = right;
@@ -114,6 +180,7 @@ var reverseBetween = function (head, left, right) {
 // 	g.next = removedNode;
 // }
 // return dummyHead.next;
+
 // @after-stub-for-debug-begin
 module.exports = reverseBetween;
 // @after-stub-for-debug-end
