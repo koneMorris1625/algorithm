@@ -68,26 +68,42 @@ class ListNode {
  * @return {ListNode}
  */
 var swapPairs = function (head) {
-	if (head === null || head.next === null) {
+	// 1.终止条件
+	if (!head || !head.next) {
 		return head;
 	}
-	let dummy = new ListNode(0, head),
-		f = dummy;
-
-	while (f && f.next && f.next.next) {
-		s = f.next;
-		t = s.next;
-
-		f.next = t;
-		s.next = t.next;
-		t.next = s;
-
-		f = f.next.next;
-	}
-	// return head; //2节点丢失
-	return dummy.next;
+	// // 获取第二个节点, 递归解决子问题
+	// let newHead = head.next,
+	// 	rest = swapPairs(newHead.next);
+	// // 第二个节点指向第一个节点
+	// newHead.next = head;
+	// // 第一个节点指向已经递归好的节点 rest
+	// head.next = rest;
+	let newHead = head.next;
+	[newHead.next, head.next] = [head, swapPairs(newHead.next)];
+	return newHead;
 };
 // @lc code=end
+
+// if (head === null || head.next === null) {
+// 	return head;
+// }
+// let dummy = new ListNode(0, head),
+// 	f = dummy;
+
+// while (f && f.next && f.next.next) {
+// 	let s = f.next,
+// 	t = s.next;
+
+// 	f.next = t;
+// 	s.next = t.next;
+// 	t.next = s;
+
+// 	f = f.next.next;
+// }
+// // return head; //2节点丢失
+// return dummy.next;
+
 let e = new ListNode(5, null),
 	ed = new ListNode(4, e),
 	edf = new ListNode(3, ed),
