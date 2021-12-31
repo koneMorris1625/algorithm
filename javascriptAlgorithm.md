@@ -18,8 +18,13 @@
       - [subString](#substring)
           - [slider window 练习](#slider-window-练习)
     - [String](#string)
-  - [Linkded List](#linkded-list)
   - [Stack](#stack)
+    - [原则](#原则)
+    - [应用](#应用)
+  - [queue](#queue)
+    - [principle](#principle)
+    - [action](#action)
+  - [Linkded List](#linkded-list)
 
 ## Array & String
 
@@ -155,6 +160,50 @@ quick sort 3 ways _三路快排法_--> 经典问题的延伸
 > - 字符的定义
 > - 大小写的问题
 
+## Stack
+
+### 原则
+
+ `后进先出`
+
+### 应用
+
+* 十进制转二进制
+  + 后出的余数反而要排在前面
+  + 余数依次入栈, 再出栈, 就能实现余数的倒序输出
+* 编辑器中有效括号的判定 Leeetcode 20
+  + 左括号入栈, 右括号出栈, 栈为空则括号有效
+* 函数调用堆栈
+  + **最后调用的函数, 最先执行完.** JS 解释器
+* 两个栈浏览器的前进后退功能
+* 两个栈加减乘除等运算操作: 5+2*2-2/1
+  + 数字栈和运算符栈, 运算符栈运算优先级高的, 直接进栈; 相同或者低的, 先处理运算符栈栈顶和数字栈栈顶前两个, 处理后的再压入数字栈, 然后再比较下一个运算符
+
+![图例](https://static001.geekbang.org/resource/image/bc/00/bc77c8d33375750f1700eb7778551600.jpg)
+
+array based and object(Linked List) based implement
+[implement-array](./leetCode-cn/03stack/00stack-array.js)
+[implement-object](./leetCode-cn/03stack/00stack-object.js)
+
+LeeetCode: 20, 155, 232, 844, 224, 682, 496
+
+## queue
+
+1. 队列是如何定义的? 有哪些基本操作, 时间复杂度各是多少?
+2. 顺序队列和链式队列各是如何实现的?
+3. 顺序队列如何做数据迁移?
+4. **循环队列**的定义是什么,如何代码实现?
+5. 阻塞队列和并发队列的概念各是怎么样的, 如何实现, 有什么样的应用场景?
+
+### principle
+
+"FIFO"
+
+### action
+
+* JS 异步队列
+* 计算最近一段时间的请求次数 [L933](leetCode-cn/04queque/933.number-of-recent-calls.js)
+
 ## Linkded List
 
 面试前一定要手写一遍
@@ -162,8 +211,3 @@ quick sort 3 ways _三路快排法_--> 经典问题的延伸
 > 解法固定, 算法 / 思路简单, 但代码容易写的很复杂.
 
 > 思路通常都不难，写对链表问题的技巧是：一定要先想清楚思路，并且必要的时候在草稿纸上画图，理清「穿针引线」的先后步骤，然后再编码。
-
-## Stack
-
-implement
- 
